@@ -1,0 +1,112 @@
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+	</head>
+<body>
+	<img class="logo" src="img\mwi-logo-horizontal.png"></img>
+	<hr></hr>
+	<h1>HEADING ONE</h1>
+
+	<div class="first-section">
+		<div class="info-block">
+			<div class="img-placeholder"></div>
+			<h2>Heading 2</h2>
+			<p>This is a paragraph text that is meant to flex and wrap to a new line based on the number of characters in this container. Please make sure this looking pretty based on the amount of characters this is taking up.</p>
+			<button>Read More</button>
+		</div>
+		<div class="info-block">
+			<div class="img-placeholder"></div>
+			<h2>Heading 2</h2>
+			<p>This is a paragraph text that is meant to flex and wrap to a new line based on the number of characters in this container. Please make sure this looking pretty based on the amount of characters this is taking up.</p>
+			<button>Read More</button>
+		</div>
+		<div class="info-block">
+			<div class="img-placeholder"></div>
+			<h2>Heading 2</h2>
+			<p>This is a paragraph text that is meant to flex and wrap to a new line based on the number of characters in this container. Please make sure this looking pretty based on the amount of characters this is taking up.</p>
+			<button>Read More</button>
+		</div>
+	</div>
+
+	<div class="second-section">
+		<h2 class="form-title">Contact</h2>
+		<form>
+			<div class="form-label">
+				<p>Email</p> <p class="error-message" id="emailErrorMessage" style="visibility:hidden">Must use a valid email.</p>
+			</div>
+			<input id="emailInput"></input>
+			<div class="form-label">
+				<p>Subject</p> <p class="error-message" id="subjectErrorMessage" style="visibility:hidden">Subject is required.</p>
+			</div>
+			<input id="subjectInput"></input>
+			<div class="form-label">
+				<p>Message</p> <p class="error-message" id="messageErrorMessage" style="visibility:hidden">Message is required.</p>
+			</div>
+			<textarea id="messageInput"></textarea><br>
+			<button type='button' onclick="dataValidation()">Submit</button>
+		</form>	
+	</div>
+
+	<div class="third-section">
+		<h1>Heading One</h1>
+		<p>Remove the duplicates in 2 Javascript objects and output the list of distinct names in an unordered list when this<a onclick="showNames()"> link is clicked</a>, if the operation has been completed already notify the user that this has already has been done.</p>
+		<div id="names"></div>
+	</div>
+
+	<div class="fourth-section">
+		<i class="bottom-text">Thanks for taking the Midwestern Interactive Benchmark Test</i>
+	</div>
+
+	<script>
+	function showNames(){
+		var nameList1 = {name1:"Matt Johnson", name2:"Bart Paden", name3:"Ryan Doss", name4:"Jared Malcolm"}; 
+		var nameList2 = {name1:"Matt Johnson", name2:"Bart Paden", name3:"Jordan Heigle", name4:"Tyler Viles"};
+		var resultObject = nameList1;
+		var keyNumber = 5;
+		for(var name in nameList2) {
+			var keyName = "name";
+			if(!(resultObject[name] === nameList2[name])){
+				keyName += keyNumber;
+				resultObject[keyName] = nameList2[name];
+				keyNumber++;
+			}
+		}
+		if(document.getElementById("names").innerHTML == ""){
+			for(name in resultObject){
+				document.getElementById("names").innerHTML += "<ul>" + resultObject[name] + "</ul>";
+			}
+		}
+		else {
+			alert("Names already output!");
+		}
+
+	}
+
+	function dataValidation(){
+		var email = document.getElementById("emailInput");
+
+		const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		if (!emailRegex.test(email.value)) {
+			document.getElementById("emailErrorMessage").style.visibility = "visible";
+		}
+		else {
+			document.getElementById("emailErrorMessage").style.visibility = "hidden";
+		}
+		if (!document.getElementById("subjectInput").value) {
+			document.getElementById("subjectErrorMessage").style.visibility = "visible";
+		}
+		else {
+			document.getElementById("subjectErrorMessage").style.visibility = "hidden";
+		}
+		if (!document.getElementById("messageInput").value) {
+			document.getElementById("messageErrorMessage").style.visibility = "visible";
+		}
+		else {
+			document.getElementById("messageErrorMessage").style.visibility = "hidden";
+		}
+
+	}
+	</script>
+</body>
+
